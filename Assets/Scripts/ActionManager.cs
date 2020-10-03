@@ -44,9 +44,11 @@ public class ActionManager : MonoBehaviour
 	private List<ActionAsset> m_actionsAssets = new List<ActionAsset>();
 
 	[NonSerialized]
-	private List<ActionInstance> m_actions = null;
+	public List<ActionInstance> m_actions = null;
+
 	[NonSerialized]
-	private ActionInstance m_currentAction = null;
+	public ActionInstance m_currentAction = null;
+
 	[NonSerialized]
-	private int m_nextIndex = 0;
+	public int m_nextIndex = 0;
 }
