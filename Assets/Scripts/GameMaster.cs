@@ -56,12 +56,22 @@ public class GameMaster : Singleton<GameMaster>
 		{
 			m_waveManager = ResourceManager.Instance.AcquireInstance(m_waveManagerPrefab, null);
 		}
+		CreateWave();
+	}
+
+	private void CreateWave()
+	{
 		m_waveManager.SpawnWave();
+		m_canLaunchNextWave = false;
+		StartCoroutine(WaitForNextWave());
 	}
 
 	private void Update()
 	{
 		CheckReload();
+
+		if (m_canLaunchNextWave == true)
+			CreateWave();
 	}
 
 	private void CheckReload()
@@ -72,14 +82,28 @@ public class GameMaster : Singleton<GameMaster>
 		}
 	}
 
+	private IEnumerator WaitForNextWave()
+	{
+		yield return new WaitForSeconds(m_waveManager.m_delayBetweenWaves);
+
+		m_canLaunchNextWave = true;
+	}
+
+	[NonSerialized]
+	private bool m_canLaunchNextWave = true;
+
 	[SerializeField]
 	private WaveManager m_waveManagerPrefab = null;
+
 	[SerializeField]
 	private List<Transform> m_upSpawns = new List<Transform>();
+
 	[SerializeField]
 	private List<Transform> m_rightSpawns = new List<Transform>();
+
 	[SerializeField]
 	private List<Transform> m_bottomSpawns = new List<Transform>();
+
 	[SerializeField]
 	private List<Transform> m_leftSpawns = new List<Transform>();
 

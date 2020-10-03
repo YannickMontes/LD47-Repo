@@ -15,6 +15,7 @@ public class WaveManager : Singleton<WaveManager>
 
 	public void SpawnWave()
 	{
+		Debug.Log("New wave " + m_waveNumber);
 		m_waveNumber++;
 		FillHazardsToSpawn();
 		StartCoroutine(SpawnHazards());
@@ -47,12 +48,17 @@ public class WaveManager : Singleton<WaveManager>
 	}
 
 	[SerializeField]
+	public float m_delayBetweenWaves = 30;
+
+	[SerializeField]
 	private int m_minHazards = 5;
+
 	[SerializeField]
 	private int m_intervalIncrease = 3;
 
 	[SerializeField]
 	private float m_minTimeBetweenSpawn = 0.2f;
+
 	[SerializeField]
 	private float m_maxTimeBetweenSpawn = 1.0f;
 
@@ -61,6 +67,7 @@ public class WaveManager : Singleton<WaveManager>
 
 	[NonSerialized]
 	private int m_waveNumber = 0;
+
 	[NonSerialized]
 	private Queue<Hazard> m_hazardsToSpawn = new Queue<Hazard>();
 }
