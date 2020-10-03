@@ -18,8 +18,13 @@ public class MovingEnemy : Hazard
 		}
 		else if (collision.tag == "Shield")
 		{
-			transform.right = transform.right * -1;
+			OnShieldContact();
 		}
+	}
+
+	protected virtual void OnShieldContact()
+	{
+		transform.right = transform.right * -1;
 	}
 
 	[SerializeField]

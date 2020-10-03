@@ -14,7 +14,7 @@ public class SwapActionInstance : ActionInstance
 	{
 		Vector2 nextPos = (Vector2)player.transform.position + (Utils.ConvertDirectionToVector(keyPressed) * Asset.Range);
 		Cell targetCell = GameMaster.Instance.Grid.GetCell((int)nextPos.x, (int)nextPos.y);
-		if (targetCell != null && targetCell.Entities.Count > 0)
+		if (targetCell != null)
 		{
 			List<GameEntity> toMove = new List<GameEntity>(targetCell.Entities);
 			foreach (GameEntity entity in toMove)

@@ -2643,26 +2643,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2257033483015840599, guid: c96ea7e625fd8564daf98a6bcb450f0b,
         type: 3}
-      propertyPath: m_actionsAssets.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2257033483015840599, guid: c96ea7e625fd8564daf98a6bcb450f0b,
-        type: 3}
-      propertyPath: m_actionsAssets.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd,
-        type: 2}
-    - target: {fileID: 2257033483015840599, guid: c96ea7e625fd8564daf98a6bcb450f0b,
-        type: 3}
-      propertyPath: m_actionsAssets.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd,
-        type: 2}
-    - target: {fileID: 2257033483015840599, guid: c96ea7e625fd8564daf98a6bcb450f0b,
-        type: 3}
       propertyPath: m_actionsAssets.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd,
+      objectReference: {fileID: 11400000, guid: 1e9efb9a25c9c3d45b12064811a4f98a,
         type: 2}
     - target: {fileID: 2257033483015840600, guid: c96ea7e625fd8564daf98a6bcb450f0b,
         type: 3}

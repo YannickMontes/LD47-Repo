@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_delayBetweenWaves: 30
-  m_minHazards: 5
-  m_intervalIncrease: 3
+  m_minHazards: 10
+  m_intervalIncrease: 5
   m_minTimeBetweenSpawn: 1
   m_maxTimeBetweenSpawn: 2
   m_hazardsPrefabs:
   - {fileID: 7927927747321465697, guid: a63ae7dd0992c8742904b8ff3b958559, type: 3}
   - {fileID: 7927927747321465697, guid: 61f3908f24d229a4798f35c30a470070, type: 3}
+  - {fileID: 6259450557137653116, guid: 2c2bd481eb06cd44bb4d658a0a2d9748, type: 3}
