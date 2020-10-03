@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a2891a69d14974081eacd69d5e2074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_xSize: 13
+  m_ySize: 10
   m_waveManagerPrefab: {fileID: 8147613093501186711, guid: 41c9934a0e2d95640b34607770a71032,
     type: 3}
   m_upSpawns:
