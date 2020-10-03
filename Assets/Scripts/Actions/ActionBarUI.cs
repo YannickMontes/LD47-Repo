@@ -50,6 +50,9 @@ public class ActionBarUI : Singleton<ActionBarUI>
 
 			case "Shield":
 				return m_spriteList[1];
+
+			case "Swap":
+				return m_spriteList[2];
 		}
 
 		return m_spriteList[0];
