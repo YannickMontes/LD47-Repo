@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7927927747321465697}
   - component: {fileID: 5307711550774732717}
   m_Layer: 0
-  m_Name: MovingEnemy
-  m_TagString: Enemy
+  m_Name: FastMovingEnemy
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142fa3f613a6bf849a9298f7fd221448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ticMultiplicator: 1
+  m_ticMultiplicator: 3
   m_allowedDirections: 0300000002000000
   m_casesTravelled: 1
 --- !u!61 &5307711550774732717

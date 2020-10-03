@@ -8,27 +8,10 @@ public class BasicMoveActionInstance : ActionInstance
 	{
 	}
 
-	public override void Execute(Player player, Player.EKeyPressed keyPressed)
+	public override void Execute(Player player, GameMaster.EDirection keyPressed)
 	{
 		Vector2 newPos = player.transform.position;
-		switch (keyPressed)
-		{
-			case Player.EKeyPressed.UP:
-				newPos = newPos + Vector2.up;
-				break;
-
-			case Player.EKeyPressed.DOWN:
-				newPos = newPos + Vector2.down;
-				break;
-
-			case Player.EKeyPressed.LEFT:
-				newPos = newPos + Vector2.left;
-				break;
-
-			case Player.EKeyPressed.RIGHT:
-				newPos = newPos + Vector2.right;
-				break;
-		}
+		newPos = newPos + Utils.ConvertDirectionToVector(keyPressed);
 		player.transform.position = newPos;
 		OnFinishAction();
 	}

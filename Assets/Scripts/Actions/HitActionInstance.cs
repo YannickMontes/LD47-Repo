@@ -8,7 +8,7 @@ public class HitActionInstance : ActionInstance
 	{
 	}
 
-	public override void Execute(Player player, Player.EKeyPressed keyPressed)
+	public override void Execute(Player player, GameMaster.EDirection keyPressed)
 	{
 		throw new System.NotImplementedException();
 	}

@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using Yube;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Hazard : MonoBehaviour
 {
+	public IReadOnlyList<GameMaster.EDirection> AllowedDirections { get { return m_allowedDirections; } }
+
 	public void Update()
 	{
 		m_elapsedTime += Time.deltaTime;
@@ -17,16 +19,10 @@ public abstract class Enemy : MonoBehaviour
 
 	public abstract void Do();
 
-	protected virtual void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.tag == "Player")
-		{
-			Destroy(gameObject);
-		}
-	}
-
 	[SerializeField]
 	private float m_ticMultiplicator = 1.0f;
+	[SerializeField]
+	private List<GameMaster.EDirection> m_allowedDirections = new List<GameMaster.EDirection>();
 
 	[NonSerialized]
 	private float m_elapsedTime = 0.0f;

@@ -14,7 +14,7 @@ public class ActionManager : MonoBehaviour
 		}
 	}
 
-	public void ExecuteNext(Player player, Player.EKeyPressed keyPressed)
+	public void ExecuteNext(Player player, GameMaster.EDirection keyPressed)
 	{
 		m_currentAction = m_actions[m_nextIndex];
 		m_currentAction.OnEndRelay.AddListener(OnEndAction);
