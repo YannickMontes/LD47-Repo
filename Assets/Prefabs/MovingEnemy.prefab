@@ -49,6 +49,7 @@ MonoBehaviour:
   m_ticMultiplicator: 1
   m_allowedDirections: 0300000002000000
   m_casesTravelled: 1
+  m_spriteRenderer: {fileID: 7927927747786437422}
 --- !u!61 &5307711550774732717
 BoxCollider2D:
   m_ObjectHideFlags: 0

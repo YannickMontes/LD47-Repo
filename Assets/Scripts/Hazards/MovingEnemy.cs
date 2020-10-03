@@ -24,4 +24,6 @@ public class MovingEnemy : Hazard
 
 	[SerializeField]
 	private int m_casesTravelled = 1;
+	[SerializeField]
+	private SpriteRenderer m_spriteRenderer = null;
 }

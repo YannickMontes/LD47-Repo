@@ -7,6 +7,11 @@ public abstract class Hazard : GameEntity
 {
 	public IReadOnlyList<GameMaster.EDirection> AllowedDirections { get { return m_allowedDirections; } }
 
+	public virtual void Init()
+	{
+		CheckGridState();
+	}
+
 	private void Update()
 	{
 		m_elapsedTime += Time.deltaTime;
