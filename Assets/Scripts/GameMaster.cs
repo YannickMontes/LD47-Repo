@@ -15,6 +15,14 @@ public class GameMaster : Singleton<GameMaster>
 		RIGHT
 	}
 
+	public Grid Grid { get { return m_grid; } }
+
+	public bool CanPlayerMove(int x, int y)
+	{
+		Cell cell = m_grid.GetCell(x, y);
+		return cell != null && !cell.Contains<Shield>();
+	}
+
 	public Transform GetSpawnPosition(EDirection direction)
 	{
 		Transform spawnPoint = null;
@@ -45,7 +53,13 @@ public class GameMaster : Singleton<GameMaster>
 		CreateWaveManager();
 	}
 
-	public void Start()
+	protected override void Awake()
+	{
+		base.Awake();
+		m_grid = new Grid(m_xSize, m_ySize);
+	}
+
+	private void Start()
 	{
 		CreateWaveManager();
 	}
@@ -89,12 +103,17 @@ public class GameMaster : Singleton<GameMaster>
 		m_canLaunchNextWave = true;
 	}
 
-	[NonSerialized]
-	private bool m_canLaunchNextWave = true;
+	[Header("Grid")]
+	[SerializeField]
+	private int m_xSize = 10;
+	[SerializeField]
+	private int m_ySize = 10;
 
+	[Header("Wave")]
 	[SerializeField]
 	private WaveManager m_waveManagerPrefab = null;
 
+	[Header("Spawn Points")]
 	[SerializeField]
 	private List<Transform> m_upSpawns = new List<Transform>();
 
@@ -109,4 +128,8 @@ public class GameMaster : Singleton<GameMaster>
 
 	[NonSerialized]
 	private WaveManager m_waveManager = null;
+	[NonSerialized]
+	private Grid m_grid = null;
+	[NonSerialized]
+	private bool m_canLaunchNextWave = true;
 }

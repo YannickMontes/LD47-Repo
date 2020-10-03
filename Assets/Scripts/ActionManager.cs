@@ -19,11 +19,6 @@ public class ActionManager : MonoBehaviour
 		m_currentAction = m_actions[m_nextIndex];
 		m_currentAction.OnEndRelay.AddListener(OnEndAction);
 		m_currentAction.Execute(player, keyPressed);
-		m_nextIndex++;
-		if (m_nextIndex >= m_actions.Count)
-		{
-			m_nextIndex = 0;
-		}
 	}
 
 	public void Update()
@@ -31,10 +26,18 @@ public class ActionManager : MonoBehaviour
 		m_currentAction?.Update();
 	}
 
-	private void OnEndAction()
+	private void OnEndAction(bool success)
 	{
 		m_currentAction.OnEndRelay.RemoveListener(OnEndAction);
 		m_currentAction = null;
+		if (success)
+		{
+			m_nextIndex++;
+			if (m_nextIndex >= m_actions.Count)
+			{
+				m_nextIndex = 0;
+			}
+		}
 	}
 
 	[SerializeField]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player : GameEntity
 {
 	public void Update()
 	{
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.tag == "Enemy")
+		if (collision.tag == "Hazard")
 		{
 			Debug.Log("Coll with enemy ! Reload");
 			GameMaster.Instance.Reload();
@@ -55,5 +55,5 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private ActionManager m_actionManager = null;
 
-	private bool m_isPressingKey = true;
+	private bool m_isPressingKey = false;
 }

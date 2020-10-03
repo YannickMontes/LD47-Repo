@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Hazard : MonoBehaviour
+public abstract class Hazard : GameEntity
 {
 	public IReadOnlyList<GameMaster.EDirection> AllowedDirections { get { return m_allowedDirections; } }
 
-	public void Update()
+	private void Update()
 	{
 		m_elapsedTime += Time.deltaTime;
 		if (m_elapsedTime >= (1.0f / m_ticMultiplicator))

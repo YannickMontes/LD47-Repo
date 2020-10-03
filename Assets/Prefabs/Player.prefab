@@ -63,6 +63,7 @@ MonoBehaviour:
   m_actionsAssets:
   - {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd, type: 2}
   - {fileID: 11400000, guid: 98690b6f88c1f774daebb843221b5f05, type: 2}
+  - {fileID: 11400000, guid: 1e9efb9a25c9c3d45b12064811a4f98a, type: 2}
 --- !u!50 &1686497499
 Rigidbody2D:
   serializedVersion: 4
