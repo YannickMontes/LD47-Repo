@@ -10,11 +10,16 @@ public class MovingEnemy : Hazard
 		transform.position = transform.position + (transform.right * m_casesTravelled);
 	}
 
-	protected virtual void OnTriggerEnter2D(Collider2D collision)
+	protected void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.tag == "Player")
+		if (collision.tag == "Player" || collision.tag == "Hazard")
 		{
 			ResourceManager.Instance.ReleaseInstance(this);
+		}
+		else if (collision.tag == "Shield")
+		{
+			transform.right = transform.right * -1;
+			//transform.Rotate(Vector3.forward, 180.0f);
 		}
 	}
 

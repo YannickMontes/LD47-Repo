@@ -9,7 +9,7 @@ public class Shield : Hazard
 	{
 	}
 
-	protected virtual void OnTriggerEnter2D(Collider2D collision)
+	protected void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.tag == "Hazard")
 		{
