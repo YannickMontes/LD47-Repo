@@ -12,7 +12,14 @@ public class BasicMoveActionInstance : ActionInstance
 	{
 		Vector2 newPos = player.transform.position;
 		newPos = newPos + Utils.ConvertDirectionToVector(keyPressed);
-		player.transform.position = newPos;
-		OnFinishAction();
+		if (GameMaster.Instance.CanPlayerMove((int)newPos.x, (int)newPos.y))
+		{
+			player.Move(player.transform.position, newPos);
+			OnFinishAction(true);
+		}
+		else
+		{
+			OnFinishAction(false);
+		}
 	}
 }

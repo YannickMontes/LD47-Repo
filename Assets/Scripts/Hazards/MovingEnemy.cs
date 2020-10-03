@@ -7,7 +7,7 @@ public class MovingEnemy : Hazard
 {
 	public override void Do()
 	{
-		transform.position = transform.position + (transform.right * m_casesTravelled);
+		Move(transform.position, transform.position + (transform.right * m_casesTravelled), true);
 	}
 
 	protected void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +19,6 @@ public class MovingEnemy : Hazard
 		else if (collision.tag == "Shield")
 		{
 			transform.right = transform.right * -1;
-			//transform.Rotate(Vector3.forward, 180.0f);
 		}
 	}
 

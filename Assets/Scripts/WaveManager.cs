@@ -40,7 +40,8 @@ public class WaveManager : Singleton<WaveManager>
 			Hazard prefab = m_hazardsToSpawn.Dequeue();
 			GameMaster.EDirection chooseDirection = prefab.AllowedDirections[UnityEngine.Random.Range(0, prefab.AllowedDirections.Count)];
 			Transform spawnPoint = GameMaster.Instance.GetSpawnPosition(chooseDirection);
-			ResourceManager.Instance.AcquireInstance(prefab, spawnPoint);
+			Hazard hazard = ResourceManager.Instance.AcquireInstance(prefab, spawnPoint);
+			hazard.transform.position = spawnPoint.position;
 			float timeToWait = UnityEngine.Random.Range(m_minTimeBetweenSpawn, m_maxTimeBetweenSpawn);
 			yield return new WaitForSeconds(timeToWait);
 		}
