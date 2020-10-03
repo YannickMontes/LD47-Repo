@@ -5,33 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-	public enum EKeyPressed
-	{
-		UP,
-		DOWN,
-		LEFT,
-		RIGHT
-	}
-
 	public void Update()
 	{
 		if (!m_isPressingKey)
 		{
 			if (Input.GetKeyDown(KeyCode.UpArrow))
 			{
-				m_actionManager.ExecuteNext(this, EKeyPressed.UP);
+				m_actionManager.ExecuteNext(this, GameMaster.EDirection.UP);
 			}
 			else if (Input.GetKeyDown(KeyCode.DownArrow))
 			{
-				m_actionManager.ExecuteNext(this, EKeyPressed.DOWN);
+				m_actionManager.ExecuteNext(this, GameMaster.EDirection.DOWN);
 			}
 			else if (Input.GetKeyDown(KeyCode.RightArrow))
 			{
-				m_actionManager.ExecuteNext(this, EKeyPressed.RIGHT);
+				m_actionManager.ExecuteNext(this, GameMaster.EDirection.RIGHT);
 			}
 			else if (Input.GetKeyDown(KeyCode.LeftArrow))
 			{
-				m_actionManager.ExecuteNext(this, EKeyPressed.LEFT);
+				m_actionManager.ExecuteNext(this, GameMaster.EDirection.LEFT);
 			}
 		}
 		else
