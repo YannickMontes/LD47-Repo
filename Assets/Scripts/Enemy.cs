@@ -17,6 +17,14 @@ public abstract class Enemy : MonoBehaviour
 
 	public abstract void Do();
 
+	protected virtual void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.tag == "Player")
+		{
+			Destroy(gameObject);
+		}
+	}
+
 	[SerializeField]
 	private float m_ticMultiplicator = 1.0f;
 

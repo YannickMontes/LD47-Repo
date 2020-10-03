@@ -51,6 +51,15 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.tag == "Enemy")
+		{
+			Debug.Log("Coll with enemy ! Reload");
+			GameMaster.Instance.Reload();
+		}
+	}
+
 	[SerializeField]
 	private ActionManager m_actionManager = null;
 

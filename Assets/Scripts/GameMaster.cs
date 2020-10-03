@@ -8,13 +8,19 @@ public class GameMaster : Singleton<GameMaster>
 {
 	public void Reload()
 	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	private void Update()
 	{
+		CheckReload();
+	}
+
+	private void CheckReload()
+	{
 		if (Input.GetKeyDown(KeyCode.R))
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			Reload();
 		}
 	}
 }
