@@ -5,4 +5,7 @@ using UnityEngine;
 public abstract class ActionAsset : ScriptableObject
 {
 	public abstract ActionInstance CreateInstance();
+
+	[SerializeField]
+	private string m_name;
 }
