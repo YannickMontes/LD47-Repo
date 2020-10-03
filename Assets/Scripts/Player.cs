@@ -38,11 +38,6 @@ public class Player : MonoBehaviour
 		{
 			CheckKeyReleased();
 		}
-
-		if (Input.GetKeyDown(KeyCode.R))
-		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		}
 	}
 
 	private void CheckKeyReleased()
