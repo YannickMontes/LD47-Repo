@@ -12,4 +12,6 @@ public abstract class ActionAsset : ScriptableObject
 	private string m_name;
 	[SerializeField]
 	private Sprite m_sprite;
+	[SerializeField]
+	public AudioClip m_clip;
 }

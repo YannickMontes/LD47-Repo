@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: Move
   m_sprite: {fileID: 21300000, guid: eed76bae6be62804ba7195e3037d2712, type: 3}
+  m_clip: {fileID: 8300000, guid: c66b5371971d5914e8499492954ec310, type: 3}

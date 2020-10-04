@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: Swap
   m_sprite: {fileID: 21300000, guid: a7ecdc16500b4124086ae0c66fd29431, type: 3}
+  m_clip: {fileID: 8300000, guid: efe676c365399db47bfdbbfd210bdb24, type: 3}
   m_range: 2
