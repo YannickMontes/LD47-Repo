@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Swap
   m_EditorClassIdentifier: 
   m_name: Swap
+  m_clip: {fileID: 8300000, guid: efe676c365399db47bfdbbfd210bdb24, type: 3}
   m_range: 2

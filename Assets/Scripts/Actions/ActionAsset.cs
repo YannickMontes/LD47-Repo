@@ -8,4 +8,7 @@ public abstract class ActionAsset : ScriptableObject
 
 	[SerializeField]
 	private string m_name;
+
+	[SerializeField]
+	public AudioClip m_clip;
 }

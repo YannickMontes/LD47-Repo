@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   m_name: Shield
+  m_clip: {fileID: 8300000, guid: 2ff59bb4427589741bee9c3c40da8cdd, type: 3}
   m_shieldPrefab: {fileID: 3492832151681675533, guid: 23e72f5f73565544fac18d026b5569fe,
     type: 3}

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yube;
 
 public class ActionManager : MonoBehaviour
 {
@@ -12,6 +13,14 @@ public class ActionManager : MonoBehaviour
 		{
 			m_actions.Add(asset.CreateInstance());
 		}
+	}
+
+	public void PlayActionSound(AudioClip clip)
+	{
+		if (clip == null || m_audioSound == null)
+			return;
+		m_audioSound.PlayClip(clip);
+		return;
 	}
 
 	public void ExecuteNext(Player player, GameMaster.EDirection keyPressed)
@@ -29,19 +38,23 @@ public class ActionManager : MonoBehaviour
 	private void OnEndAction(bool success)
 	{
 		m_currentAction.OnEndRelay.RemoveListener(OnEndAction);
-		m_currentAction = null;
 		if (success)
 		{
+			PlayActionSound(m_currentAction.Asset.m_clip);
 			m_nextIndex++;
 			if (m_nextIndex >= m_actions.Count)
 			{
 				m_nextIndex = 0;
 			}
 		}
+		m_currentAction = null;
 	}
 
 	[SerializeField]
 	private List<ActionAsset> m_actionsAssets = new List<ActionAsset>();
+
+	[SerializeField]
+	private AudioSound m_audioSound = null;
 
 	[NonSerialized]
 	public List<ActionInstance> m_actions = null;

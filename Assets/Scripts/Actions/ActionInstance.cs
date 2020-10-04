@@ -25,6 +25,6 @@ public abstract class ActionInstance
 		m_endRelay?.Dispatch(success);
 	}
 
-	private ActionAsset m_asset = null;
+	public ActionAsset m_asset = null;
 	private Relay<bool> m_endRelay = null;
 }

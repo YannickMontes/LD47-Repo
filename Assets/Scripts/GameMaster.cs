@@ -117,10 +117,13 @@ public class GameMaster : Singleton<GameMaster>
 	[Header("Grid")]
 	[SerializeField]
 	private int m_xSize = 10;
+
 	[SerializeField]
 	private int m_ySize = 10;
+
 	[SerializeField]
 	public GameObject m_pairBox;
+
 	[SerializeField]
 	public GameObject m_oddBox;
 
@@ -130,12 +133,16 @@ public class GameMaster : Singleton<GameMaster>
 
 	[NonSerialized]
 	private GameState m_gameState = default(GameState);
+
 	[NonSerialized]
 	private WaveManager m_waveManager = null;
+
 	[NonSerialized]
 	private Grid m_grid = null;
+
 	[NonSerialized]
 	private bool m_canLaunchNextWave = true;
+
 	[NonSerialized]
 	private Relay<GameState> m_gameStateRelay = null;
 }

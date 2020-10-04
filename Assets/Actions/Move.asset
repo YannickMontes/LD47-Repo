@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Move
   m_EditorClassIdentifier: 
   m_name: Move
+  m_clip: {fileID: 8300000, guid: c66b5371971d5914e8499492954ec310, type: 3}
