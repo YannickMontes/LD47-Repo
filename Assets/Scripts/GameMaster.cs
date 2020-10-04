@@ -23,25 +23,25 @@ public class GameMaster : Singleton<GameMaster>
 		return cell != null && !cell.Contains<Shield>();
 	}
 
-	public Transform GetSpawnPosition(EDirection direction)
+	public Vector3 GetSpawnPosition(EDirection direction)
 	{
-		Transform spawnPoint = null;
+		Vector3 spawnPoint = Vector3.zero;
 		switch (direction)
 		{
 			case EDirection.UP:
-				spawnPoint = m_upSpawns[UnityEngine.Random.Range(0, m_upSpawns.Count)];
+				spawnPoint = new Vector3(UnityEngine.Random.Range(0, Grid.X), Grid.Y - 1, 0.0f);
 				break;
 
 			case EDirection.DOWN:
-				spawnPoint = m_bottomSpawns[UnityEngine.Random.Range(0, m_bottomSpawns.Count)];
+				spawnPoint = new Vector3(UnityEngine.Random.Range(0, Grid.X), 0.0f, 0.0f);
 				break;
 
 			case EDirection.RIGHT:
-				spawnPoint = m_rightSpawns[UnityEngine.Random.Range(0, m_rightSpawns.Count)];
+				spawnPoint = new Vector3(Grid.X - 1, UnityEngine.Random.Range(0, Grid.Y), 0.0f);
 				break;
 
 			case EDirection.LEFT:
-				spawnPoint = m_leftSpawns[UnityEngine.Random.Range(0, m_leftSpawns.Count)];
+				spawnPoint = new Vector3(0.0f, UnityEngine.Random.Range(0, Grid.Y), 0.0f);
 				break;
 		}
 		return spawnPoint;
@@ -112,19 +112,6 @@ public class GameMaster : Singleton<GameMaster>
 	[Header("Wave")]
 	[SerializeField]
 	private WaveManager m_waveManagerPrefab = null;
-
-	[Header("Spawn Points")]
-	[SerializeField]
-	private List<Transform> m_upSpawns = new List<Transform>();
-
-	[SerializeField]
-	private List<Transform> m_rightSpawns = new List<Transform>();
-
-	[SerializeField]
-	private List<Transform> m_bottomSpawns = new List<Transform>();
-
-	[SerializeField]
-	private List<Transform> m_leftSpawns = new List<Transform>();
 
 	[NonSerialized]
 	private WaveManager m_waveManager = null;

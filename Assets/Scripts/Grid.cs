@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Grid
 {
+	public int X { get { return m_Xsize; } }
+	public int Y { get { return m_Ysize; } }
+
 	public Grid(int x, int y)
 	{
 		m_Xsize = x;
