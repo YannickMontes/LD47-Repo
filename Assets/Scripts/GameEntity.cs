@@ -1,9 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Yube;
 using UnityEngine;
 
 public abstract class GameEntity : MonoBehaviour
 {
+	public virtual void Hit()
+	{
+		ResourceManager.Instance.ReleaseInstance(this);
+	}
+
 	private void OnDisable()
 	{
 		Cell previousCell = GameMaster.Instance.Grid.GetCell((int)transform.position.x, (int)transform.position.y);
