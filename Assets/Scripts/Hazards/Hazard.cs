@@ -34,5 +34,5 @@ public abstract class Hazard : GameEntity
 	[NonSerialized]
 	private float m_elapsedTime = 0.0f;
 	[NonSerialized]
-	private GameMaster.EDirection m_spawnedDirection;
+	protected GameMaster.EDirection m_spawnedDirection;
 }
