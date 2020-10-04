@@ -61,6 +61,7 @@ public class ActionManager : MonoBehaviour
 			{
 				m_nextIndex = 0;
 			}
+			ScoreManager.Instance.IncreaseScore(m_currentAction.Asset.ScorePoint);
 		}
 		m_currentAction = null;
 	}

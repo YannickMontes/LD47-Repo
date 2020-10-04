@@ -8,6 +8,11 @@ public class ScoreManager : Singleton<ScoreManager>
 {
 	public int Score { get { return m_score; } }
 
+	public void IncreaseScore(int increase)
+	{
+		m_score += increase;
+	}
+
 	private void ResetScore()
 	{
 		m_score = 0;

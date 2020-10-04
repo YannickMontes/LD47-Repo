@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f6c04230c7a30419fbdd3db0a6ef43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ticMultiplicator: 0.5
+  m_ticMultiplicator: 0.3
   m_allowedDirections: 0200000003000000
   m_arrowToShoot: {fileID: 7184431956668556281, guid: 4b97d35d590e9c64da122e9a33318b10,
     type: 3}

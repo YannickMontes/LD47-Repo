@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ticMultiplicator: 1
   m_allowedDirections: 
+  m_scorePoint: 5
 --- !u!61 &3492832151681675534
 BoxCollider2D:
   m_ObjectHideFlags: 0

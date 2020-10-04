@@ -13,7 +13,11 @@ public class Shield : Hazard
 	{
 		if (collision.tag == "Hazard")
 		{
+			ScoreManager.Instance.IncreaseScore(m_scorePoint);
 			ResourceManager.Instance.ReleaseInstance(this);
 		}
 	}
+
+	[SerializeField]
+	private int m_scorePoint = 5;
 }
