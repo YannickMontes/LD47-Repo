@@ -14,8 +14,17 @@ public class ShieldSpawnActionInstance : ActionInstance
 	public override void Execute(Player player, GameMaster.EDirection keyPressed)
 	{
 		Vector3 position = player.transform.position + (Vector3)Utils.ConvertDirectionToVector(keyPressed);
-		if (GameMaster.Instance.Grid.GetCell((int)position.x, (int)position.y) != null)
+		Cell cell = GameMaster.Instance.Grid.GetCell((int)position.x, (int)position.y);
+		if (cell != null)
 		{
+			foreach (GameEntity gameEntity in cell.Entities)
+			{
+				if (gameEntity.tag == "Shield")
+				{
+					OnFinishAction(false);
+					return;
+				}
+			}
 			Shield shield = ResourceManager.Instance.AcquireInstance(Asset.ShieldPrefab, null);
 			shield.Move(shield.transform.position, position);
 			OnFinishAction(true);
