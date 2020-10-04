@@ -25,6 +25,7 @@ public class GameMaster : Singleton<GameMaster>
 
 	public Grid Grid { get { return m_grid; } }
 	public IRelayLink<GameState> GameStateRelay { get { return m_gameStateRelay ?? (m_gameStateRelay = new Relay<GameState>()); } }
+	public Player Player { get { return m_player; } }
 
 	public bool CanPlayerMove(int x, int y)
 	{
@@ -56,6 +57,17 @@ public class GameMaster : Singleton<GameMaster>
 		return spawnPoint;
 	}
 
+	public void LaunchGame(List<ActionAsset> playerActions)
+	{
+		ChangeState(GameState.IN_GAME);
+		m_grid = new Grid(m_xSize, m_ySize, m_pairBox, m_oddBox);
+		CreateWaveManager();
+		m_canLaunchNextWave = true;
+		m_player = ResourceManager.Instance.AcquireInstance(m_playerPrefab, null);
+		m_player.transform.position = new Vector2((int)(Grid.X / 2.0f), (int)(Grid.Y / 2.0f));
+		m_player.InitActions(playerActions);
+	}
+
 	public void Reload()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -64,15 +76,21 @@ public class GameMaster : Singleton<GameMaster>
 
 	private void Start()
 	{
-		m_gameState = GameState.CHOOSE_SEQUENCE;
-		m_grid = new Grid(m_xSize, m_ySize, m_pairBox, m_oddBox);
-		CreateWaveManager();
+		ChangeState(GameState.CHOOSE_SEQUENCE);
 	}
 
 	protected void ChangeState(GameState newState)
 	{
 		m_gameState = newState;
 		m_gameStateRelay?.Dispatch(newState);
+		if (newState == GameState.IN_GAME)
+		{
+			m_gameMusicSource.Play();
+		}
+		else
+		{
+			m_gameMusicSource.Stop();
+		}
 	}
 
 	private void CreateWaveManager()
@@ -95,8 +113,11 @@ public class GameMaster : Singleton<GameMaster>
 	{
 		CheckReload();
 
-		if (m_canLaunchNextWave == true)
-			CreateWave();
+		if (m_gameState == GameState.IN_GAME)
+		{
+			if (m_canLaunchNextWave == true)
+				CreateWave();
+		}
 	}
 
 	private void CheckReload()
@@ -117,19 +138,27 @@ public class GameMaster : Singleton<GameMaster>
 	[Header("Grid")]
 	[SerializeField]
 	private int m_xSize = 10;
-
 	[SerializeField]
 	private int m_ySize = 10;
-
 	[SerializeField]
 	public GameObject m_pairBox;
-
 	[SerializeField]
 	public GameObject m_oddBox;
 
 	[Header("Wave")]
 	[SerializeField]
 	private WaveManager m_waveManagerPrefab = null;
+
+	[Header("Prefabs")]
+	[SerializeField]
+	private Player m_playerPrefab = null;
+
+	[Header("Audio")]
+	[SerializeField]
+	private AudioSource m_gameMusicSource = null;
+
+	[NonSerialized]
+	private Player m_player = null;
 
 	[NonSerialized]
 	private GameState m_gameState = default(GameState);
@@ -141,7 +170,7 @@ public class GameMaster : Singleton<GameMaster>
 	private Grid m_grid = null;
 
 	[NonSerialized]
-	private bool m_canLaunchNextWave = true;
+	private bool m_canLaunchNextWave = false;
 
 	[NonSerialized]
 	private Relay<GameState> m_gameStateRelay = null;

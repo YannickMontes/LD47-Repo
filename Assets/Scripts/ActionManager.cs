@@ -6,12 +6,12 @@ using Yube;
 
 public class ActionManager : MonoBehaviour
 {
-	public void Awake()
+	public void InitActions(List<ActionAsset> actionsAssets)
 	{
-		m_actions = new List<ActionInstance>(m_actionsAssets.Count);
-		foreach (ActionAsset asset in m_actionsAssets)
+		m_actions = new List<ActionInstance>(actionsAssets.Count);
+		foreach (ActionAsset actionAsset in actionsAssets)
 		{
-			m_actions.Add(asset.CreateInstance());
+			m_actions.Add(actionAsset.CreateInstance());
 		}
 	}
 
@@ -51,17 +51,12 @@ public class ActionManager : MonoBehaviour
 	}
 
 	[SerializeField]
-	private List<ActionAsset> m_actionsAssets = new List<ActionAsset>();
-
-	[SerializeField]
 	private AudioSound m_audioSound = null;
 
 	[NonSerialized]
 	public List<ActionInstance> m_actions = null;
-
 	[NonSerialized]
 	public ActionInstance m_currentAction = null;
-
 	[NonSerialized]
 	public int m_nextIndex = 0;
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActionBarUI : Singleton<ActionBarUI>
 {
@@ -24,49 +25,23 @@ public class ActionBarUI : Singleton<ActionBarUI>
 	{
 		for (int ui = 0; ui < m_slotsList.Count; ui++)
 		{
-			GameObject go = m_slotsList[ui];
-			SpriteRenderer spriteRendeder = go.GetComponent<SpriteRenderer>();
-			spriteRendeder.sprite = GetActionSprite(m_actionManager.m_actions[ui]);
+			m_slotsList[ui].sprite = GameMaster.Instance.Player.ActionManager.m_actions[ui].Asset.Sprite;
 		}
 	}
 
 	private void UpdateUI()
 	{
-		if (m_currentIndex != m_actionManager.m_nextIndex)
+		if (m_currentIndex != GameMaster.Instance.Player.ActionManager.m_nextIndex)
 		{
-			GameObject go = m_slotsList[m_actionManager.m_nextIndex];
+			GameObject go = m_slotsList[GameMaster.Instance.Player.ActionManager.m_nextIndex].gameObject;
 			Transform bgTransform = m_spriteBackground.transform;
 			bgTransform.position = go.transform.position;
-			m_currentIndex = m_actionManager.m_nextIndex;
+			m_currentIndex = GameMaster.Instance.Player.ActionManager.m_nextIndex;
 		}
 	}
 
-	private Sprite GetActionSprite(ActionInstance actionInstance)
-	{
-		switch (actionInstance.Asset.name)
-		{
-			case "Move":
-				return m_spriteList[0];
-
-			case "Shield":
-				return m_spriteList[1];
-
-			case "Swap":
-				return m_spriteList[2];
-		}
-
-		return m_spriteList[0];
-	}
-
 	[SerializeField]
-	private ActionManager m_actionManager = null;
-
-	[SerializeField]
-	private List<GameObject> m_slotsList = new List<GameObject>();
-
-	[SerializeField]
-	private List<Sprite> m_spriteList = new List<Sprite>();
-
+	private List<Image> m_slotsList = new List<Image>();
 	[SerializeField]
 	private GameObject m_spriteBackground;
 

@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Player : GameEntity
 {
+	public ActionManager ActionManager { get { return m_actionManager; } }
+
+	public void InitActions(List<ActionAsset> actionAssets)
+	{
+		m_actionManager.InitActions(actionAssets);
+	}
+
 	public void Update()
 	{
 		if (!m_isPressingKey)

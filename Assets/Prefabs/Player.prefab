@@ -62,12 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd09c6d28c6d2e479338d140dd29baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionsAssets:
-  - {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd, type: 2}
-  - {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd, type: 2}
-  - {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd, type: 2}
-  - {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd, type: 2}
-  - {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd, type: 2}
   m_audioSound: {fileID: 2021723690}
 --- !u!50 &1686497499
 Rigidbody2D:
@@ -127,8 +121,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.324
+  m_PlayOnAwake: 0
+  m_Volume: 0.479
   m_Pitch: 1
   Loop: 0
   Mute: 0

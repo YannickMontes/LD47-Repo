@@ -11,7 +11,12 @@ public class ChooseSequencePage : MonoBehaviour
 	{
 		if (GetFirstButtonNotFilled() == null)
 		{
-			//Launch next
+			List<ActionAsset> sequenceActions = new List<ActionAsset>();
+			foreach (ActionButtonUI actionButtonUI in m_finalSequence)
+			{
+				sequenceActions.Add(actionButtonUI.ActionAsset);
+			}
+			GameMaster.Instance.LaunchGame(sequenceActions);
 		}
 	}
 
@@ -34,6 +39,7 @@ public class ChooseSequencePage : MonoBehaviour
 		{
 			actionButtonUI.OnClickRelay.AddListener(OnGeneratedButtonClick);
 		}
+		CheckPlayButtonInteractability();
 	}
 
 	private void OnDisable()
@@ -57,6 +63,7 @@ public class ChooseSequencePage : MonoBehaviour
 			m_selectedButtonsDict.Add(clickedButton, notFilledButton);
 			clickedButton.EnableInteraction(false);
 		}
+		CheckPlayButtonInteractability();
 	}
 
 	private void OnSequenceButtonClick(ActionButtonUI clickedButton)
@@ -76,6 +83,7 @@ public class ChooseSequencePage : MonoBehaviour
 			m_selectedButtonsDict[keyToRemove].SetAction(null);
 			m_selectedButtonsDict.Remove(keyToRemove);
 		}
+		CheckPlayButtonInteractability();
 	}
 
 	private ActionButtonUI GetFirstButtonNotFilled()
@@ -104,6 +112,11 @@ public class ChooseSequencePage : MonoBehaviour
 		m_generatedActions.Shuffle();
 	}
 
+	private void CheckPlayButtonInteractability()
+	{
+		m_playButton.interactable = m_finalSequence.Count == m_selectedButtonsDict.Count;
+	}
+
 	[Header("Random generation")]
 	[SerializeField]
 	private List<ActionAsset> m_actions = new List<ActionAsset>();
@@ -115,6 +128,8 @@ public class ChooseSequencePage : MonoBehaviour
 	private List<ActionButtonUI> m_generatedSequence = new List<ActionButtonUI>();
 	[SerializeField]
 	private List<ActionButtonUI> m_finalSequence = new List<ActionButtonUI>();
+	[SerializeField]
+	private Button m_playButton = null;
 
 	[NonSerialized]
 	private Dictionary<ActionButtonUI, ActionButtonUI> m_selectedButtonsDict = new Dictionary<ActionButtonUI, ActionButtonUI>(); //Clicked => final
