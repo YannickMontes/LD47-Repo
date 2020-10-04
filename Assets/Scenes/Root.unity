@@ -128,10 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1914058288, guid: 8ef1b4f063e62ce47892f647446f9cc2, type: 3}
-      propertyPath: m_scoreText
-      value: 
-      objectReference: {fileID: 2106788413}
     - target: {fileID: 3890668902064577716, guid: 8ef1b4f063e62ce47892f647446f9cc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -324,18 +320,6 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 627270132}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2106788413 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2106788413, guid: 8ef1b4f063e62ce47892f647446f9cc2,
-    type: 3}
-  m_PrefabInstance: {fileID: 235572550}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1567038790758312820
 PrefabInstance:
   m_ObjectHideFlags: 0
