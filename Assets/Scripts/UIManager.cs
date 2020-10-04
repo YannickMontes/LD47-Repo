@@ -6,6 +6,7 @@ using Yube;
 
 public class UIManager : Singleton<UIManager>
 {
+	[Serializable]
 	public class GameStatePage
 	{
 		public GameObject Page = null;
