@@ -2,23 +2,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yube;
 
 public class Grid
 {
 	public int X { get { return m_Xsize; } }
 	public int Y { get { return m_Ysize; } }
 
-	public Grid(int x, int y)
+	public Grid(int x, int y, GameObject pairBox, GameObject oddBox)
 	{
 		m_Xsize = x;
 		m_Ysize = y;
+		int gridCount = 0;
 		for (int i = 0; i < m_Ysize; i++)
 		{
 			List<Cell> cells = new List<Cell>();
 			for (int j = 0; j < m_Xsize; j++)
 			{
 				cells.Add(new Cell());
+
+				GameObject go;
+				if (gridCount % 2 == 0)
+					go = ResourceManager.Instance.AcquireInstance(pairBox, null);
+				else
+					go = ResourceManager.Instance.AcquireInstance(oddBox, null);
+
+				go.transform.position = new Vector3(j, i, 0);
+
+				gridCount++;
 			}
+			if (m_Xsize % 2 == 0)
+				gridCount++;
+
 			m_grid.Add(cells);
 		}
 	}

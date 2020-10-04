@@ -56,11 +56,11 @@ public class GameMaster : Singleton<GameMaster>
 	protected override void Awake()
 	{
 		base.Awake();
-		m_grid = new Grid(m_xSize, m_ySize);
 	}
 
 	private void Start()
 	{
+		m_grid = new Grid(m_xSize, m_ySize, m_pairBox, m_oddBox);
 		CreateWaveManager();
 	}
 
@@ -106,6 +106,7 @@ public class GameMaster : Singleton<GameMaster>
 	[Header("Grid")]
 	[SerializeField]
 	private int m_xSize = 10;
+
 	[SerializeField]
 	private int m_ySize = 10;
 
@@ -115,8 +116,16 @@ public class GameMaster : Singleton<GameMaster>
 
 	[NonSerialized]
 	private WaveManager m_waveManager = null;
+
 	[NonSerialized]
 	private Grid m_grid = null;
+
 	[NonSerialized]
 	private bool m_canLaunchNextWave = true;
+
+	[SerializeField]
+	public GameObject m_pairBox;
+
+	[SerializeField]
+	public GameObject m_oddBox;
 }
