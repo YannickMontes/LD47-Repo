@@ -23,11 +23,17 @@ public class ActionManager : MonoBehaviour
 		return;
 	}
 
+	public void UpdatePlayerSprite(Player player)
+	{
+		player.UpdateSprite();
+	}
+
 	public void ExecuteNext(Player player, GameMaster.EDirection keyPressed)
 	{
 		m_currentAction = m_actions[m_nextIndex];
 		m_currentAction.OnEndRelay.AddListener(OnEndAction);
 		m_currentAction.Execute(player, keyPressed);
+		UpdatePlayerSprite(player);
 	}
 
 	public void Update()
@@ -55,8 +61,10 @@ public class ActionManager : MonoBehaviour
 
 	[NonSerialized]
 	public List<ActionInstance> m_actions = null;
+
 	[NonSerialized]
 	public ActionInstance m_currentAction = null;
+
 	[NonSerialized]
 	public int m_nextIndex = 0;
 }

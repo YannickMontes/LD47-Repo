@@ -50,6 +50,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionManager: {fileID: 2257033483015840599}
+  m_sprites:
+  - {fileID: 21300000, guid: 17c30009e48c3ec428c92edd359dcc62, type: 3}
+  - {fileID: 21300000, guid: 88656715b0ed4414184a99adec629c01, type: 3}
+  - {fileID: 21300000, guid: 11701d8c374ac09409226ca5f347ff18, type: 3}
+  m_playerSprite: {fileID: 2257033484075415800}
 --- !u!114 &2257033483015840599
 MonoBehaviour:
   m_ObjectHideFlags: 0

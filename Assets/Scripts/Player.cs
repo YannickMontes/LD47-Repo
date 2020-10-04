@@ -59,8 +59,32 @@ public class Player : GameEntity
 		}
 	}
 
+	public void UpdateSprite()
+	{
+		switch (m_actionManager.m_actions[m_actionManager.m_nextIndex].m_asset.name)
+		{
+			case "Move":
+				m_playerSprite.sprite = m_sprites[0];
+				break;
+
+			case "Shield":
+				m_playerSprite.sprite = m_sprites[1];
+				break;
+
+			case "Swap":
+				m_playerSprite.sprite = m_sprites[2];
+				break;
+		}
+	}
+
 	[SerializeField]
 	private ActionManager m_actionManager = null;
+
+	[SerializeField]
+	private List<Sprite> m_sprites = new List<Sprite>();
+
+	[SerializeField]
+	private SpriteRenderer m_playerSprite = null;
 
 	private bool m_isPressingKey = false;
 }
