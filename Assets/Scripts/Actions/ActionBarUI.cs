@@ -7,15 +7,12 @@ using UnityEngine.UI;
 
 public class ActionBarUI : Singleton<ActionBarUI>
 {
-	// Start is called before the first frame update
-
-	private void Start()
+	private void OnEnable()
 	{
 		InitUI();
 		UpdateUI();
 	}
 
-	// Update is called once per frame
 	private void Update()
 	{
 		UpdateUI();
@@ -43,7 +40,7 @@ public class ActionBarUI : Singleton<ActionBarUI>
 	[SerializeField]
 	private List<Image> m_slotsList = new List<Image>();
 	[SerializeField]
-	private GameObject m_spriteBackground;
+	private GameObject m_spriteBackground = null;
 
 	[NonSerialized]
 	public int m_currentIndex = -1;

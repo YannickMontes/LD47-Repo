@@ -7,6 +7,12 @@ public class Player : GameEntity
 {
 	public ActionManager ActionManager { get { return m_actionManager; } }
 
+	public void Reset()
+	{
+		m_isPressingKey = false;
+		ActionManager.Reset();
+	}
+
 	public void InitActions(List<ActionAsset> actionAssets)
 	{
 		m_actionManager.InitActions(actionAssets);
@@ -55,7 +61,7 @@ public class Player : GameEntity
 		if (collision.tag == "Hazard")
 		{
 			Debug.Log("Coll with enemy ! Reload");
-			GameMaster.Instance.Reload();
+			GameMaster.Instance.OnPlayerHit();
 		}
 	}
 

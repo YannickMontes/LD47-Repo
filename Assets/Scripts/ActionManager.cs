@@ -6,6 +6,13 @@ using Yube;
 
 public class ActionManager : MonoBehaviour
 {
+	public void Reset()
+	{
+		m_currentAction = null;
+		m_nextIndex = 0;
+		m_actions.Clear();
+	}
+
 	public void InitActions(List<ActionAsset> actionsAssets)
 	{
 		m_actions = new List<ActionInstance>(actionsAssets.Count);
@@ -13,6 +20,8 @@ public class ActionManager : MonoBehaviour
 		{
 			m_actions.Add(actionAsset.CreateInstance());
 		}
+		m_currentAction = null;
+		m_nextIndex = 0;
 	}
 
 	public void PlayActionSound(AudioClip clip)

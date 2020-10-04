@@ -59,19 +59,31 @@ public class GameMaster : Singleton<GameMaster>
 
 	public void LaunchGame(List<ActionAsset> playerActions)
 	{
-		ChangeState(GameState.IN_GAME);
 		m_grid = new Grid(m_xSize, m_ySize, m_pairBox, m_oddBox);
 		CreateWaveManager();
 		m_canLaunchNextWave = true;
 		m_player = ResourceManager.Instance.AcquireInstance(m_playerPrefab, null);
 		m_player.transform.position = new Vector2((int)(Grid.X / 2.0f), (int)(Grid.Y / 2.0f));
 		m_player.InitActions(playerActions);
+		ChangeState(GameState.IN_GAME);
 	}
 
-	public void Reload()
+	public void Replay()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		CreateWaveManager();
+		ChangeState(GameState.CHOOSE_SEQUENCE);
+	}
+
+	public void OnPlayerHit()
+	{
+		m_waveManager.Reset();
+		ResourceManager.Instance.ReleaseInstance(m_waveManager);
+		m_waveManager = null;
+		m_player.Reset();
+		ResourceManager.Instance.ReleaseInstance(m_player);
+		m_player = null;
+		m_grid.Destroy();
+		m_grid = null;
+		ChangeState(GameState.END_SCREEN);
 	}
 
 	private void Start()
@@ -124,7 +136,7 @@ public class GameMaster : Singleton<GameMaster>
 	{
 		if (Input.GetKeyDown(KeyCode.R))
 		{
-			Reload();
+			OnPlayerHit();
 		}
 	}
 

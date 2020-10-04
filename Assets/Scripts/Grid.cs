@@ -26,7 +26,7 @@ public class Grid
 					go = ResourceManager.Instance.AcquireInstance(pairBox, null);
 				else
 					go = ResourceManager.Instance.AcquireInstance(oddBox, null);
-
+				m_visuals.Add(go);
 				go.transform.position = new Vector3(j, i, 0);
 
 				gridCount++;
@@ -47,9 +47,28 @@ public class Grid
 		return null;
 	}
 
+	public void Destroy()
+	{
+		foreach (List<Cell> cells in m_grid)
+		{
+			foreach (Cell cell in cells)
+			{
+				cell.Destroy();
+			}
+			cells.Clear();
+		}
+		m_grid.Clear();
+		foreach (GameObject visual in m_visuals)
+		{
+			ResourceManager.Instance.ReleaseInstance(visual);
+		}
+		m_visuals.Clear();
+	}
+
 	private int m_Xsize = 10;
 	private int m_Ysize = 10;
 	private List<List<Cell>> m_grid = new List<List<Cell>>();
+	private List<GameObject> m_visuals = new List<GameObject>();
 }
 
 public class Cell
@@ -74,6 +93,14 @@ public class Cell
 	public void RemoveEntity(GameEntity entity)
 	{
 		m_entityOnCell.Remove(entity);
+	}
+
+	public void Destroy()
+	{
+		for (int i = m_entityOnCell.Count - 1; i >= 0; i--)
+		{
+			ResourceManager.Instance.ReleaseInstance(m_entityOnCell[i]);
+		}
 	}
 
 	private List<GameEntity> m_entityOnCell = new List<GameEntity>();
