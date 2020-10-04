@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yube;
+using Yube.Relays;
 
 public class GameMaster : Singleton<GameMaster>
 {
@@ -15,7 +16,15 @@ public class GameMaster : Singleton<GameMaster>
 		RIGHT
 	}
 
+	public enum GameState
+	{
+		CHOOSE_SEQUENCE,
+		IN_GAME,
+		END_SCREEN
+	}
+
 	public Grid Grid { get { return m_grid; } }
+	public IRelayLink<GameState> GameStateRelay { get { return m_gameStateRelay ?? (m_gameStateRelay = new Relay<GameState>()); } }
 
 	public bool CanPlayerMove(int x, int y)
 	{
@@ -53,15 +62,17 @@ public class GameMaster : Singleton<GameMaster>
 		CreateWaveManager();
 	}
 
-	protected override void Awake()
-	{
-		base.Awake();
-	}
-
 	private void Start()
 	{
+		m_gameState = GameState.CHOOSE_SEQUENCE;
 		m_grid = new Grid(m_xSize, m_ySize, m_pairBox, m_oddBox);
 		CreateWaveManager();
+	}
+
+	protected void ChangeState(GameState newState)
+	{
+		m_gameState = newState;
+		m_gameStateRelay?.Dispatch(newState);
 	}
 
 	private void CreateWaveManager()
@@ -106,26 +117,25 @@ public class GameMaster : Singleton<GameMaster>
 	[Header("Grid")]
 	[SerializeField]
 	private int m_xSize = 10;
-
 	[SerializeField]
 	private int m_ySize = 10;
+	[SerializeField]
+	public GameObject m_pairBox;
+	[SerializeField]
+	public GameObject m_oddBox;
 
 	[Header("Wave")]
 	[SerializeField]
 	private WaveManager m_waveManagerPrefab = null;
 
 	[NonSerialized]
+	private GameState m_gameState = default(GameState);
+	[NonSerialized]
 	private WaveManager m_waveManager = null;
-
 	[NonSerialized]
 	private Grid m_grid = null;
-
 	[NonSerialized]
 	private bool m_canLaunchNextWave = true;
-
-	[SerializeField]
-	public GameObject m_pairBox;
-
-	[SerializeField]
-	public GameObject m_oddBox;
+	[NonSerialized]
+	private Relay<GameState> m_gameStateRelay = null;
 }
