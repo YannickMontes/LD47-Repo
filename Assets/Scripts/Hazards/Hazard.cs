@@ -7,8 +7,10 @@ public abstract class Hazard : GameEntity
 {
 	public IReadOnlyList<GameMaster.EDirection> AllowedDirections { get { return m_allowedDirections; } }
 
-	public virtual void Init()
+	public virtual void Init(GameMaster.EDirection direction)
 	{
+		m_elapsedTime = 0.0f;
+		m_spawnedDirection = direction;
 		CheckGridState();
 	}
 
@@ -31,4 +33,6 @@ public abstract class Hazard : GameEntity
 
 	[NonSerialized]
 	private float m_elapsedTime = 0.0f;
+	[NonSerialized]
+	private GameMaster.EDirection m_spawnedDirection;
 }
