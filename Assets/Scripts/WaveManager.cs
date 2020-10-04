@@ -61,7 +61,7 @@ public class WaveManager : Singleton<WaveManager>
 					hazard.transform.right = Vector2.right;
 					break;
 			}
-			hazard.Init();
+			hazard.Init(chooseDirection);
 			float timeToWait = UnityEngine.Random.Range(m_minTimeBetweenSpawn, m_maxTimeBetweenSpawn);
 			yield return new WaitForSeconds(timeToWait);
 		}

@@ -7,7 +7,22 @@ public class MovingEnemy : Hazard
 {
 	public override void Do()
 	{
-		Move(transform.position, transform.position + (transform.right * m_casesTravelled), true);
+		Vector2 nextPos = transform.position + (transform.right * m_casesTravelled);
+		if (GameMaster.Instance.Grid.GetCell((int)nextPos.x, (int)nextPos.y) == null)
+		{
+			OnMapBorderReached();
+		}
+		else
+		{
+			Move(transform.position, nextPos);
+		}
+	}
+
+	protected virtual void OnMapBorderReached()
+	{
+		InvertDirection();
+		Vector2 nextPos = transform.position + (transform.right * m_casesTravelled);
+		Move(transform.position, nextPos);
 	}
 
 	protected void OnTriggerEnter2D(Collider2D collision)
@@ -24,11 +39,14 @@ public class MovingEnemy : Hazard
 
 	protected virtual void OnShieldContact()
 	{
+		InvertDirection();
+	}
+
+	protected void InvertDirection()
+	{
 		transform.right = transform.right * -1;
 	}
 
 	[SerializeField]
 	private int m_casesTravelled = 1;
-	[SerializeField]
-	private SpriteRenderer m_spriteRenderer = null;
 }

@@ -96,7 +96,6 @@ MonoBehaviour:
   m_ticMultiplicator: 1.2
   m_allowedDirections: 00000000
   m_casesTravelled: 1
-  m_spriteRenderer: {fileID: 7927927747786437422}
 --- !u!1 &7927927747786437408
 GameObject:
   m_ObjectHideFlags: 0
