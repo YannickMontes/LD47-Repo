@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class HitActionInstance : ActionInstance
 {
@@ -30,11 +31,26 @@ public class HitActionInstance : ActionInstance
 		}
 	}
 
+	public override void Reset()
+	{
+		base.Reset();
+
+		if (m_visualSpawned != null)
+		{
+			ResourceManager.Instance.ReleaseInstance(m_visualSpawned);
+			m_visualSpawned = null;
+		}
+	}
+
 	private IEnumerator SpawnVisual(Vector2 spawnPos)
 	{
-		GameObject visual = ResourceManager.Instance.AcquireInstance(Asset.VisualToPop, null);
-		visual.transform.position = spawnPos;
+		m_visualSpawned = ResourceManager.Instance.AcquireInstance(Asset.VisualToPop, null);
+		m_visualSpawned.transform.position = spawnPos;
 		yield return new WaitForSeconds(Asset.TimeVisualStay);
-		ResourceManager.Instance.ReleaseInstance(visual);
+		ResourceManager.Instance.ReleaseInstance(m_visualSpawned);
+		m_visualSpawned = null;
 	}
+
+	[NonSerialized]
+	private GameObject m_visualSpawned = null;
 }
