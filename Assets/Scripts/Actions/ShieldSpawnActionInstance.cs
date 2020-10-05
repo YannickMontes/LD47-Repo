@@ -27,7 +27,7 @@ public class ShieldSpawnActionInstance : ActionInstance
 			}
 			Shield shield = ResourceManager.Instance.AcquireInstance(Asset.ShieldPrefab, null);
 			shield.Move(shield.transform.position, position);
-			OnFinishAction(true);
+			OnFinishAction(true, false);
 		}
 		else
 		{

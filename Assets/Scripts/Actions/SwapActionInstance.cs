@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class SwapActionInstance : ActionInstance
@@ -17,12 +18,14 @@ public class SwapActionInstance : ActionInstance
 		if (targetCell != null)
 		{
 			List<GameEntity> toMove = new List<GameEntity>(targetCell.Entities);
+			bool hasSwap = false;
 			foreach (GameEntity entity in toMove)
 			{
 				entity.Move(entity.transform.position, player.transform.position);
+				hasSwap = true;
 			}
 			player.Move(player.transform.position, nextPos);
-			OnFinishAction(true);
+			OnFinishAction(true, hasSwap);
 		}
 		else
 		{

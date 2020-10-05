@@ -25,26 +25,10 @@ public class MovingEnemy : Hazard
 		Move(transform.position, nextPos);
 	}
 
-	protected void OnTriggerEnter2D(Collider2D collision)
+	protected override void OnShieldCollide()
 	{
-		if (collision.tag == "Player" || collision.tag == "Hazard")
-		{
-			ResourceManager.Instance.ReleaseInstance(this);
-		}
-		else if (collision.tag == "Shield")
-		{
-			OnShieldContact();
-		}
-	}
-
-	protected virtual void OnShieldContact()
-	{
+		base.OnShieldCollide();
 		InvertDirection();
-	}
-
-	protected void InvertDirection()
-	{
-		transform.right = transform.right * -1;
 	}
 
 	[SerializeField]

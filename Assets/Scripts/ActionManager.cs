@@ -54,7 +54,7 @@ public class ActionManager : MonoBehaviour
 		m_currentAction?.Update();
 	}
 
-	private void OnEndAction(bool success)
+	private void OnEndAction(bool success, bool addScore)
 	{
 		m_currentAction.OnEndRelay.RemoveListener(OnEndAction);
 		if (success)
@@ -65,7 +65,10 @@ public class ActionManager : MonoBehaviour
 			{
 				m_nextIndex = 0;
 			}
-			ScoreManager.Instance.IncreaseScore(m_currentAction.Asset.ScorePoint);
+			if (addScore)
+			{
+				ScoreManager.Instance.IncreaseScore(m_currentAction.Asset.ScorePoint);
+			}
 		}
 		m_currentAction = null;
 	}
