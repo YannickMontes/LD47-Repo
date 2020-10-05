@@ -26,6 +26,43 @@ public abstract class Hazard : GameEntity
 
 	public abstract void Do();
 
+	protected void OnTriggerEnter2D(Collider2D collision)
+	{
+		switch (collision.tag)
+		{
+			case "Player":
+				OnPlayerCollide();
+				break;
+
+			case "Hazard":
+				OnHazardCollide();
+				break;
+
+			case "Shield":
+				OnShieldCollide();
+				break;
+		}
+	}
+
+	protected virtual void OnHazardCollide()
+	{
+		ResourceManager.Instance.ReleaseInstance(this);
+	}
+
+	protected virtual void OnPlayerCollide()
+	{
+		ResourceManager.Instance.ReleaseInstance(this);
+	}
+
+	protected virtual void OnShieldCollide()
+	{
+	}
+
+	protected void InvertDirection()
+	{
+		transform.right = transform.right * -1;
+	}
+
 	[SerializeField]
 	private float m_ticMultiplicator = 1.0f;
 	[SerializeField]

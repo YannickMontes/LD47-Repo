@@ -7,7 +7,7 @@ public class Rock : MovingEnemy
 		ResourceManager.Instance.ReleaseInstance(this);
 	}
 
-	protected override void OnShieldContact()
+	protected override void OnShieldCollide()
 	{
 		ResourceManager.Instance.ReleaseInstance(this);
 	}
