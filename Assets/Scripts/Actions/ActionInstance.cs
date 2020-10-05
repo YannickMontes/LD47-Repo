@@ -15,6 +15,10 @@ public abstract class ActionInstance
 	{
 	}
 
+	public virtual void Reset()
+	{
+	}
+
 	protected ActionInstance(ActionAsset asset)
 	{
 		m_asset = asset;

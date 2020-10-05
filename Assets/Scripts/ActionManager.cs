@@ -10,6 +10,10 @@ public class ActionManager : MonoBehaviour
 	{
 		m_currentAction = null;
 		m_nextIndex = 0;
+		foreach (ActionInstance action in m_actions)
+		{
+			action.Reset();
+		}
 		m_actions.Clear();
 	}
 
