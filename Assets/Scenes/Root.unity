@@ -448,6 +448,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2257033483015840598, guid: c96ea7e625fd8564daf98a6bcb450f0b,
         type: 3}
+    - target: {fileID: 1567038789709304919, guid: e31aa6b8d5f3a2f47b0bc1c9411e845e,
+        type: 3}
+      propertyPath: m_backgroundBox
+      value: 
+      objectReference: {fileID: 3665246817482668035, guid: 6ffdfbb05608aec4ab41b427fc881846,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e31aa6b8d5f3a2f47b0bc1c9411e845e, type: 3}
 --- !u!1001 &3526629419603364543
