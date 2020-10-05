@@ -9,7 +9,7 @@ public class Grid
 	public int X { get { return m_Xsize; } }
 	public int Y { get { return m_Ysize; } }
 
-	public Grid(int x, int y, GameObject pairBox, GameObject oddBox)
+	public Grid(int x, int y, GameObject backgroundBox, GameObject pairBox, GameObject oddBox)
 	{
 		m_Xsize = x;
 		m_Ysize = y;
@@ -28,7 +28,10 @@ public class Grid
 					go = ResourceManager.Instance.AcquireInstance(oddBox, null);
 				m_visuals.Add(go);
 				go.transform.position = new Vector3(j, i, 0);
-
+				//bg
+				go = ResourceManager.Instance.AcquireInstance(backgroundBox, null);
+				go.transform.position = new Vector3(j, i, 0);
+				m_visuals.Add(go);
 				gridCount++;
 			}
 			if (m_Xsize % 2 == 0)

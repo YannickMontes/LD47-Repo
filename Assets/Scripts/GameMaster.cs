@@ -59,7 +59,7 @@ public class GameMaster : Singleton<GameMaster>
 
 	public void LaunchGame(List<ActionAsset> playerActions)
 	{
-		m_grid = new Grid(m_xSize, m_ySize, m_pairBox, m_oddBox);
+		m_grid = new Grid(m_xSize, m_ySize, m_backgroundBox, m_pairBox, m_oddBox);
 		CreateWaveManager();
 		m_canLaunchNextWave = true;
 		m_player = ResourceManager.Instance.AcquireInstance(m_playerPrefab, null);
@@ -154,12 +154,18 @@ public class GameMaster : Singleton<GameMaster>
 	[Header("Grid")]
 	[SerializeField]
 	private int m_xSize = 10;
+
 	[SerializeField]
 	private int m_ySize = 10;
+
 	[SerializeField]
 	public GameObject m_pairBox;
+
 	[SerializeField]
 	public GameObject m_oddBox;
+
+	[SerializeField]
+	public GameObject m_backgroundBox;
 
 	[Header("Wave")]
 	[SerializeField]

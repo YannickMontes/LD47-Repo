@@ -52,9 +52,9 @@ MonoBehaviour:
   m_updateEveryTicTime: 10
   m_actionManager: {fileID: 2257033483015840599}
   m_sprites:
-  - {fileID: 21300000, guid: 17c30009e48c3ec428c92edd359dcc62, type: 3}
-  - {fileID: 21300000, guid: 88656715b0ed4414184a99adec629c01, type: 3}
-  - {fileID: 21300000, guid: 11701d8c374ac09409226ca5f347ff18, type: 3}
+  - {fileID: 21300000, guid: ef9dcf2a57278b841b5537f75442ac8a, type: 3}
+  - {fileID: 21300000, guid: 4162a93ba0f49c745b586ee5ab96b905, type: 3}
+  - {fileID: 21300000, guid: ce4ed92e15ce4774eb1f140244434874, type: 3}
   - {fileID: 21300000, guid: 94dc16a5bc572ad4caba95e4d1c45e48, type: 3}
   m_playerSprite: {fileID: 2257033484075415800}
 --- !u!114 &2257033483015840599
@@ -326,7 +326,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 17c30009e48c3ec428c92edd359dcc62, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef9dcf2a57278b841b5537f75442ac8a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

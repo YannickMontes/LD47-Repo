@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_scorePoint: 100
   m_sprite: {fileID: 21300000, guid: 84216615fa5a4454f93ddfcb3e2c75a0, type: 3}
-  m_clip: {fileID: 8300000, guid: c66b5371971d5914e8499492954ec310, type: 3}
+  m_clip: {fileID: 8300000, guid: e773ca73358433c42b1f88ec68ed25cf, type: 3}
   m_visualToPop: {fileID: 3492832151681675535, guid: 6a70b5b103174a74d9ee373b9011ce67,
     type: 3}
   m_timeVisualStay: 0.25
