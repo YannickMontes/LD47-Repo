@@ -80,6 +80,10 @@ public class Player : GameEntity
 			case "Swap":
 				m_playerSprite.sprite = m_sprites[2];
 				break;
+
+			case "Hit":
+				m_playerSprite.sprite = m_sprites[3];
+				break;
 		}
 	}
 

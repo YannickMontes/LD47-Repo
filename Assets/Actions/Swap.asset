@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75771c6f13d8358459eb972ea3d1066e, type: 3}
   m_Name: Swap
   m_EditorClassIdentifier: 
-  m_scorePoint: 15
+  m_scorePoint: 500
   m_sprite: {fileID: 21300000, guid: a7ecdc16500b4124086ae0c66fd29431, type: 3}
   m_clip: {fileID: 8300000, guid: efe676c365399db47bfdbbfd210bdb24, type: 3}
   m_range: 2

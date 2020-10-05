@@ -18,18 +18,6 @@ public class Archer : Hazard
 		arrow.Init(m_spawnedDirection);
 	}
 
-	protected void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.tag == "Player" || collision.tag == "Hazard")
-		{
-			ResourceManager.Instance.ReleaseInstance(this);
-		}
-		else if (collision.tag == "Shield")
-		{
-			OnShieldCollide();
-		}
-	}
-
 	[SerializeField]
 	private Arrow m_arrowToShoot = null;
 	[SerializeField]

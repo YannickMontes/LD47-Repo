@@ -22,7 +22,7 @@ public class ActionBarUI : Singleton<ActionBarUI>
 	{
 		for (int ui = 0; ui < m_slotsList.Count; ui++)
 		{
-			m_slotsList[ui].sprite = GameMaster.Instance.Player.ActionManager.m_actions[ui].Asset.Sprite;
+			m_slotsList[ui].sprite = GameMaster.Instance?.Player.ActionManager.m_actions[ui].Asset.Sprite;
 		}
 	}
 

@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3492832152797215852}
   - component: {fileID: 3492832152797215851}
   m_Layer: 0
-  m_Name: shield
+  m_Name: hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,8 +100,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 84216615fa5a4454f93ddfcb3e2c75a0, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 3750998f1fd6e544da6b62d2b505d4b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

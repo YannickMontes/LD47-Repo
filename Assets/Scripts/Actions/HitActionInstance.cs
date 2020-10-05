@@ -18,12 +18,14 @@ public class HitActionInstance : ActionInstance
 		Cell cell = GameMaster.Instance.Grid.GetCell((int)aimPos.x, (int)aimPos.y);
 		if (cell != null)
 		{
-			player.StartCoroutine(SpawnVisual(aimPos));
+			player.StartCoroutine(SpawnVisual(aimPos, keyPressed));
+			bool hasHit = false;
 			for (int i = cell.Entities.Count - 1; i >= 0; i--)
 			{
+				hasHit = true;
 				cell.Entities[i].Hit();
 			}
-			OnFinishAction(true);
+			OnFinishAction(true, hasHit);
 		}
 		else
 		{
@@ -42,10 +44,15 @@ public class HitActionInstance : ActionInstance
 		}
 	}
 
-	private IEnumerator SpawnVisual(Vector2 spawnPos)
+	private IEnumerator SpawnVisual(Vector2 spawnPos, GameMaster.EDirection direction)
 	{
+		if (m_visualSpawned != null)
+		{
+			ResourceManager.Instance.ReleaseInstance(m_visualSpawned);
+		}
 		m_visualSpawned = ResourceManager.Instance.AcquireInstance(Asset.VisualToPop, null);
 		m_visualSpawned.transform.position = spawnPos;
+		m_visualSpawned.transform.right = Utils.ConvertDirectionToVector(direction);
 		yield return new WaitForSeconds(Asset.TimeVisualStay);
 		ResourceManager.Instance.ReleaseInstance(m_visualSpawned);
 		m_visualSpawned = null;
