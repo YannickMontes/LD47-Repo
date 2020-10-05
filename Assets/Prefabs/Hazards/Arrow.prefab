@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d978d74c99d52a84d993bc59e601aea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_updateEveryTicTime: 10
   m_ticMultiplicator: 3
   m_allowedDirections: 
   m_casesTravelled: 1

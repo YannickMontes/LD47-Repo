@@ -14,17 +14,15 @@ public abstract class Hazard : GameEntity
 		CheckGridState();
 	}
 
-	private void Update()
-	{
-		m_elapsedTime += Time.deltaTime;
-		if (m_elapsedTime >= (1.0f / m_ticMultiplicator))
-		{
-			Do();
-			m_elapsedTime = 0.0f;
-		}
-	}
-
-	public abstract void Do();
+	//private void Update()
+	//{
+	//	m_elapsedTime += Time.deltaTime;
+	//	if (m_elapsedTime >= (1.0f / m_ticMultiplicator))
+	//	{
+	//		Do();
+	//		m_elapsedTime = 0.0f;
+	//	}
+	//}
 
 	protected void OnTriggerEnter2D(Collider2D collision)
 	{

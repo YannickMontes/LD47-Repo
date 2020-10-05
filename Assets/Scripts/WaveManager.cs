@@ -6,60 +6,45 @@ using UnityEngine;
 
 public class WaveManager : Singleton<WaveManager>
 {
-	public void Reset()
+	public void OnTicUpdate(float ticNumber)
 	{
-		StopAllCoroutines();
-		m_hazardsToSpawn.Clear();
-		m_waveNumber = 0;
-	}
-
-	public void SpawnWave()
-	{
-		Debug.Log("New wave " + m_waveNumber);
-		m_waveNumber++;
-		FillHazardsToSpawn();
-		StartCoroutine(SpawnHazards());
-	}
-
-	private void FillHazardsToSpawn()
-	{
-		int minNbHazards = m_minHazards + ((m_waveNumber - 1) * m_intervalIncrease);
-		int maxNbHazards = m_minHazards + (m_waveNumber * m_intervalIncrease);
-		/** **BASIC RANDOM **/
-		m_hazardsToSpawn.Clear();
-		int nbHazard = UnityEngine.Random.Range(minNbHazards, maxNbHazards + 1);
-		while (m_hazardsToSpawn.Count < nbHazard)
+		if (m_canSpawnNextHazard)
 		{
-			int prefabIndex = UnityEngine.Random.Range(0, m_hazardsPrefabs.Count);
-			m_hazardsToSpawn.Enqueue(m_hazardsPrefabs[prefabIndex]);
-		}
-	}
-
-	private IEnumerator SpawnHazards()
-	{
-		while (m_hazardsToSpawn.Count > 0)
-		{
-			Hazard prefab = m_hazardsToSpawn.Dequeue();
+			Hazard prefabToSpawn = null;
+			m_hazardsToSpawn.Shuffle();
+			foreach (Hazard hazardToSpawn in m_hazardsToSpawn)
+			{
+				if (ticNumber % hazardToSpawn.UpdateEveryTicTime == 0)
+				{
+					prefabToSpawn = hazardToSpawn;
+					break;
+				}
+			}
+			if (prefabToSpawn == null)
+			{
+				return;
+			}
+			m_hazardsToSpawn.Remove(prefabToSpawn);
 			bool hasEntityOnCell = true;
 			GameMaster.EDirection chooseDirection = default(GameMaster.EDirection);
 			Vector3 spawnPoint = Vector3.zero;
 			int tryLimit = 0;
 			while (hasEntityOnCell)
 			{
-				chooseDirection = prefab.AllowedDirections[UnityEngine.Random.Range(0, prefab.AllowedDirections.Count)];
+				chooseDirection = prefabToSpawn.AllowedDirections[UnityEngine.Random.Range(0, prefabToSpawn.AllowedDirections.Count)];
 				spawnPoint = GameMaster.Instance.GetSpawnPosition(chooseDirection);
 				hasEntityOnCell = GameMaster.Instance.Grid.GetCell((int)spawnPoint.x, (int)spawnPoint.y).Entities.Count > 0;
 				if (tryLimit > 1000)
 				{
 					tryLimit = 0;
-					yield return 0;
+					return;//Spawn on next frame
 				}
 				else
 				{
 					tryLimit++;
 				}
 			}
-			Hazard hazard = ResourceManager.Instance.AcquireInstance(prefab, null);
+			Hazard hazard = ResourceManager.Instance.AcquireInstance(prefabToSpawn, null);
 			hazard.transform.position = spawnPoint;
 			switch (chooseDirection)
 			{
@@ -80,9 +65,48 @@ public class WaveManager : Singleton<WaveManager>
 					break;
 			}
 			hazard.Init(chooseDirection);
+			m_canSpawnNextHazard = false;
+		}
+	}
+
+	public void Reset()
+	{
+		StopAllCoroutines();
+		m_hazardsToSpawn.Clear();
+		m_waveNumber = 0;
+	}
+
+	public void SpawnWave()
+	{
+		Debug.Log("New wave " + m_waveNumber);
+		m_waveNumber++;
+		FillHazardsToSpawn();
+		StartCoroutine(WaitTimeForNextSpawn());
+	}
+
+	private void FillHazardsToSpawn()
+	{
+		int minNbHazards = m_minHazards + ((m_waveNumber - 1) * m_intervalIncrease);
+		int maxNbHazards = m_minHazards + (m_waveNumber * m_intervalIncrease);
+		/** **BASIC RANDOM **/
+		m_hazardsToSpawn.Clear();
+		int nbHazard = UnityEngine.Random.Range(minNbHazards, maxNbHazards + 1);
+		while (m_hazardsToSpawn.Count < nbHazard)
+		{
+			int prefabIndex = UnityEngine.Random.Range(0, m_hazardsPrefabs.Count);
+			m_hazardsToSpawn.Add(m_hazardsPrefabs[prefabIndex]);
+		}
+	}
+
+	private IEnumerator WaitTimeForNextSpawn()
+	{
+		while (m_hazardsToSpawn.Count > 0)
+		{
 			float timeToWait = UnityEngine.Random.Range(m_minTimeBetweenSpawn, m_maxTimeBetweenSpawn);
 			yield return new WaitForSeconds(timeToWait);
+			m_canSpawnNextHazard = true;
 		}
+		m_canSpawnNextHazard = false;
 	}
 
 	[SerializeField]
@@ -104,8 +128,11 @@ public class WaveManager : Singleton<WaveManager>
 	private List<Hazard> m_hazardsPrefabs = new List<Hazard>();
 
 	[NonSerialized]
+	private bool m_canSpawnNextHazard = false;
+
+	[NonSerialized]
 	private int m_waveNumber = 0;
 
 	[NonSerialized]
-	private Queue<Hazard> m_hazardsToSpawn = new Queue<Hazard>();
+	private List<Hazard> m_hazardsToSpawn = new List<Hazard>();
 }

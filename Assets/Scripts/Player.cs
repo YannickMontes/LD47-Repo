@@ -87,6 +87,10 @@ public class Player : GameEntity
 		}
 	}
 
+	protected override void Do()
+	{
+	}
+
 	[SerializeField]
 	private ActionManager m_actionManager = null;
 

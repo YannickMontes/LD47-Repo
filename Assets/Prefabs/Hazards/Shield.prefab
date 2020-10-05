@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea7372e575db24408d5bf64af40920a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_updateEveryTicTime: 10
   m_ticMultiplicator: 1
   m_allowedDirections: 
   m_scorePoint: 150

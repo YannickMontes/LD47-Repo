@@ -137,13 +137,19 @@ PrefabInstance:
         type: 3}
       propertyPath: m_mandatoryActions.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 3587b103d62749a43bb95e2d288a78d2,
+      objectReference: {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd,
         type: 2}
     - target: {fileID: 3890668901669739306, guid: 8ef1b4f063e62ce47892f647446f9cc2,
         type: 3}
       propertyPath: m_mandatoryActions.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 3587b103d62749a43bb95e2d288a78d2,
+      objectReference: {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd,
+        type: 2}
+    - target: {fileID: 3890668901669739306, guid: 8ef1b4f063e62ce47892f647446f9cc2,
+        type: 3}
+      propertyPath: m_mandatoryActions.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd,
         type: 2}
     - target: {fileID: 3890668902064577716, guid: 8ef1b4f063e62ce47892f647446f9cc2,
         type: 3}
@@ -254,6 +260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890668902577226235, guid: 8ef1b4f063e62ce47892f647446f9cc2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ef1b4f063e62ce47892f647446f9cc2, type: 3}
@@ -508,6 +519,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2917cfe0a1dfc134aa832636fb79b113, type: 3}
+--- !u!1001 &6077744621741058649
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075559292667895648, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634446522723951100, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_Name
+      value: UpdateEntityManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913999985071981208, guid: c2905eaec2b2c7249a66b59094a88c40,
+        type: 3}
+      propertyPath: m_ticTime
+      value: 0.01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2905eaec2b2c7249a66b59094a88c40, type: 3}
 --- !u!1001 &6714631466559968162
 PrefabInstance:
   m_ObjectHideFlags: 0

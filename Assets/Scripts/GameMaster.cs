@@ -65,6 +65,7 @@ public class GameMaster : Singleton<GameMaster>
 		m_player = ResourceManager.Instance.AcquireInstance(m_playerPrefab, null);
 		m_player.transform.position = new Vector2((int)(Grid.X / 2.0f), (int)(Grid.Y / 2.0f));
 		m_player.InitActions(playerActions);
+		UpdateEntityManager.Instance.StartUpdate();
 		ChangeState(GameState.IN_GAME);
 	}
 
@@ -83,11 +84,14 @@ public class GameMaster : Singleton<GameMaster>
 		m_player = null;
 		m_grid.Destroy();
 		m_grid = null;
+		UpdateEntityManager.Instance.StopUpdate();
 		ChangeState(GameState.END_SCREEN);
 	}
 
 	private void Start()
 	{
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 30;
 		ChangeState(GameState.CHOOSE_SEQUENCE);
 	}
 

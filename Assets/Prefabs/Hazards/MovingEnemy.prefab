@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142fa3f613a6bf849a9298f7fd221448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_updateEveryTicTime: 30
   m_ticMultiplicator: 1
   m_allowedDirections: 0300000002000000
   m_casesTravelled: 1

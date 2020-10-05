@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Archer : Hazard
 {
-	public override void Do()
+	protected override void Do()
 	{
 		ShootArrow();
 	}

@@ -5,7 +5,7 @@ using Yube;
 
 public class Shield : Hazard
 {
-	public override void Do()
+	protected override void Do()
 	{
 	}
 
