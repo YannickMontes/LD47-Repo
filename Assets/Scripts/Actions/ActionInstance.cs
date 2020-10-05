@@ -7,7 +7,7 @@ public abstract class ActionInstance
 {
 	public ActionAsset Asset { get { return m_asset as ActionAsset; } }
 
-	public IRelayLink<bool> OnEndRelay { get { return m_endRelay ?? (m_endRelay = new Relay<bool>()); } }
+	public IRelayLink<bool, bool> OnEndRelay { get { return m_endRelay ?? (m_endRelay = new Relay<bool, bool>()); } }
 
 	public abstract void Execute(Player player, GameMaster.EDirection keyPressed);
 
@@ -24,11 +24,11 @@ public abstract class ActionInstance
 		m_asset = asset;
 	}
 
-	protected void OnFinishAction(bool success)
+	protected void OnFinishAction(bool success, bool addScore = true)
 	{
-		m_endRelay?.Dispatch(success);
+		m_endRelay?.Dispatch(success, addScore);
 	}
 
 	public ActionAsset m_asset = null;
-	private Relay<bool> m_endRelay = null;
+	private Relay<bool, bool> m_endRelay = null;
 }
