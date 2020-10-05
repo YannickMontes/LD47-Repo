@@ -23,9 +23,10 @@ public class WaveManager : Singleton<WaveManager>
 
 	private void FillHazardsToSpawn()
 	{
-		m_hazardsToSpawn.Clear();
 		int minNbHazards = m_minHazards + ((m_waveNumber - 1) * m_intervalIncrease);
 		int maxNbHazards = m_minHazards + (m_waveNumber * m_intervalIncrease);
+		/** **BASIC RANDOM **/
+		m_hazardsToSpawn.Clear();
 		int nbHazard = UnityEngine.Random.Range(minNbHazards, maxNbHazards + 1);
 		while (m_hazardsToSpawn.Count < nbHazard)
 		{
@@ -39,8 +40,25 @@ public class WaveManager : Singleton<WaveManager>
 		while (m_hazardsToSpawn.Count > 0)
 		{
 			Hazard prefab = m_hazardsToSpawn.Dequeue();
-			GameMaster.EDirection chooseDirection = prefab.AllowedDirections[UnityEngine.Random.Range(0, prefab.AllowedDirections.Count)];
-			Vector3 spawnPoint = GameMaster.Instance.GetSpawnPosition(chooseDirection);
+			bool hasEntityOnCell = true;
+			GameMaster.EDirection chooseDirection = default(GameMaster.EDirection);
+			Vector3 spawnPoint = Vector3.zero;
+			int tryLimit = 0;
+			while (hasEntityOnCell)
+			{
+				chooseDirection = prefab.AllowedDirections[UnityEngine.Random.Range(0, prefab.AllowedDirections.Count)];
+				spawnPoint = GameMaster.Instance.GetSpawnPosition(chooseDirection);
+				hasEntityOnCell = GameMaster.Instance.Grid.GetCell((int)spawnPoint.x, (int)spawnPoint.y).Entities.Count > 0;
+				if (tryLimit > 1000)
+				{
+					tryLimit = 0;
+					yield return 0;
+				}
+				else
+				{
+					tryLimit++;
+				}
+			}
 			Hazard hazard = ResourceManager.Instance.AcquireInstance(prefab, null);
 			hazard.transform.position = spawnPoint;
 			switch (chooseDirection)
