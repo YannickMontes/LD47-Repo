@@ -107,7 +107,25 @@ public class ChooseSequencePage : MonoBehaviour
 		}
 		while (m_generatedActions.Count < m_generatedSequence.Count)
 		{
-			m_generatedActions.Add(m_actions[UnityEngine.Random.Range(0, m_actions.Count)]);
+			ActionAsset choosedAction = m_actions[UnityEngine.Random.Range(0, m_actions.Count)];
+			while (choosedAction.name == "Swap")
+			{
+				int cpt = 0;
+				foreach (ActionAsset asset in m_generatedActions)
+				{
+					if (asset.name == "Swap")
+						cpt++;
+				}
+				if (cpt < 2)
+				{
+					break;
+				}
+				else
+				{
+					choosedAction = m_actions[UnityEngine.Random.Range(0, m_actions.Count)];
+				}
+			}
+			m_generatedActions.Add(choosedAction);
 		}
 		m_generatedActions.Shuffle();
 	}
