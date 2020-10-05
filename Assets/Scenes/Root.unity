@@ -128,29 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3890668901669739306, guid: 8ef1b4f063e62ce47892f647446f9cc2,
-        type: 3}
-      propertyPath: m_mandatoryActions.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890668901669739306, guid: 8ef1b4f063e62ce47892f647446f9cc2,
-        type: 3}
-      propertyPath: m_mandatoryActions.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd,
-        type: 2}
-    - target: {fileID: 3890668901669739306, guid: 8ef1b4f063e62ce47892f647446f9cc2,
-        type: 3}
-      propertyPath: m_mandatoryActions.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd,
-        type: 2}
-    - target: {fileID: 3890668901669739306, guid: 8ef1b4f063e62ce47892f647446f9cc2,
-        type: 3}
-      propertyPath: m_mandatoryActions.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 840c76cacd91f43459b9a817734505bd,
-        type: 2}
     - target: {fileID: 3890668902064577716, guid: 8ef1b4f063e62ce47892f647446f9cc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -260,11 +237,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UIManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890668902577226235, guid: 8ef1b4f063e62ce47892f647446f9cc2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ef1b4f063e62ce47892f647446f9cc2, type: 3}
