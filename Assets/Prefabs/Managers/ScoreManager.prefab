@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae92431908a54f4faa2958659e8479b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_scorePerTimeUnit: 10
+  m_timeUnit: 1
