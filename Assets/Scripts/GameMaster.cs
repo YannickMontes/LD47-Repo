@@ -66,6 +66,7 @@ public class GameMaster : Singleton<GameMaster>
 		m_player.transform.position = new Vector2((int)(Grid.X / 2.0f), (int)(Grid.Y / 2.0f));
 		m_player.InitActions(playerActions);
 		UpdateEntityManager.Instance.StartUpdate();
+		m_player.ActionManager.UpdatePlayerSprite(m_player);
 		ChangeState(GameState.IN_GAME);
 	}
 
