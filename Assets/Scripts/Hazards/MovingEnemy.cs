@@ -31,6 +31,34 @@ public class MovingEnemy : Hazard
 		InvertDirection();
 	}
 
+	public override void Move(Vector2 fromPosition, Vector2 toPosition)
+	{
+		if (!gameObject.activeSelf)
+			return;
+
+		Cell nextCell = GameMaster.Instance.Grid.GetCell((int)toPosition.x, (int)toPosition.y);
+		if (nextCell != null)
+		{
+			bool canMove = true;
+			for (int i = nextCell.Entities.Count - 1; i >= 0; i--)
+			{
+				if (nextCell.Entities[i].GetType() == this.GetType() && nextCell.Entities[i].transform.right == (transform.right * -1))
+				{
+					canMove = false;
+					ResourceManager.Instance.ReleaseInstance(nextCell.Entities[i]);
+				}
+			}
+			if (!canMove)
+			{
+				ResourceManager.Instance.ReleaseInstance(this);
+			}
+			else
+			{
+				base.Move(fromPosition, toPosition);
+			}
+		}
+	}
+
 	[SerializeField]
 	private int m_casesTravelled = 1;
 }

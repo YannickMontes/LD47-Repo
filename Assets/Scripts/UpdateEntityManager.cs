@@ -34,10 +34,21 @@ public class UpdateEntityManager : Singleton<UpdateEntityManager>
 			m_nbTics++;
 			for (int i = m_entities.Count - 1; i >= 0; i--)
 			{
-				if (m_entities[i] == null)
+				try
 				{
-					Debug.LogError("Null entity on update manager... Skiping");
-					continue;
+					if (i >= m_entities.Count)
+					{
+						continue;
+					}
+					if (m_entities[i] == null)
+					{
+						Debug.LogError("Null entity on update manager... Skiping");
+						continue;
+					}
+				}
+				catch (System.ArgumentOutOfRangeException ex)
+				{
+					Debug.Log("lul");
 				}
 				m_entities[i].OnUpdateTic();
 			}

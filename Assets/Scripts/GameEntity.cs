@@ -47,19 +47,22 @@ public abstract class GameEntity : MonoBehaviour
 		}
 	}
 
-	public void Move(Vector2 fromPosition, Vector2 toPosition, bool allowOutsideMaps = false)
+	public virtual void Move(Vector2 fromPosition, Vector2 toPosition)
 	{
+		if (!gameObject.activeSelf)
+			return;
+
 		Cell previousCell = GameMaster.Instance.Grid.GetCell((int)fromPosition.x, (int)fromPosition.y);
 		if (previousCell != null)
 		{
 			previousCell.RemoveEntity(this);
 		}
 		Cell nextCell = GameMaster.Instance.Grid.GetCell((int)toPosition.x, (int)toPosition.y);
-		if (nextCell != null || allowOutsideMaps)
+		if (nextCell != null)
 		{
-			nextCell?.AddEntity(this);
-			transform.position = toPosition;
+			nextCell.AddEntity(this);
 		}
+		transform.position = toPosition;
 	}
 
 	[SerializeField]
