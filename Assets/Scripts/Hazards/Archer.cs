@@ -12,10 +12,14 @@ public class Archer : Hazard
 
 	public void ShootArrow()
 	{
-		Arrow arrow = ResourceManager.Instance.AcquireInstance(m_arrowToShoot, null);
-		arrow.transform.position = transform.position + transform.right;
-		arrow.transform.right = transform.right;
-		arrow.Init(m_spawnedDirection);
+		Vector2 spawnPos = transform.position + transform.right;
+		if (GameMaster.Instance.Grid.GetCell(spawnPos) != null)
+		{
+			Arrow arrow = ResourceManager.Instance.AcquireInstance(m_arrowToShoot, null);
+			arrow.transform.position = transform.position + transform.right;
+			arrow.transform.right = transform.right;
+			arrow.Init(m_spawnedDirection);
+		}
 	}
 
 	[SerializeField]
