@@ -50,6 +50,13 @@ public class Grid
 		return null;
 	}
 
+	public Cell GetCell(Vector2 coord)
+	{
+		int xCoord = Mathf.RoundToInt(coord.x);
+		int yCoord = Mathf.RoundToInt(coord.y);
+		return GetCell(xCoord, yCoord);
+	}
+
 	public void Destroy()
 	{
 		foreach (List<Cell> cells in m_grid)

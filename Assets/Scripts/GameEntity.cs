@@ -8,6 +8,7 @@ public abstract class GameEntity : MonoBehaviour
 
 	private void OnEnable()
 	{
+		m_elapsedTic = 0;
 		UpdateEntityManager.Instance.AddEntity(this);
 	}
 
@@ -31,16 +32,17 @@ public abstract class GameEntity : MonoBehaviour
 	private void OnDisable()
 	{
 		UpdateEntityManager.Instance.RemoveEntity(this);
-		Cell previousCell = GameMaster.Instance.Grid.GetCell((int)transform.position.x, (int)transform.position.y);
+		Cell previousCell = GameMaster.Instance.Grid.GetCell(transform.position);
 		if (previousCell != null)
 		{
 			previousCell.RemoveEntity(this);
 		}
+		m_elapsedTic = 0;
 	}
 
 	public void CheckGridState()
 	{
-		Cell currentCell = GameMaster.Instance.Grid.GetCell((int)transform.position.x, (int)transform.position.y);
+		Cell currentCell = GameMaster.Instance.Grid.GetCell(transform.position);
 		if (currentCell != null)
 		{
 			currentCell.AddEntity(this);
@@ -52,12 +54,12 @@ public abstract class GameEntity : MonoBehaviour
 		if (!gameObject.activeSelf)
 			return;
 
-		Cell previousCell = GameMaster.Instance.Grid.GetCell((int)fromPosition.x, (int)fromPosition.y);
+		Cell previousCell = GameMaster.Instance.Grid.GetCell(fromPosition);
 		if (previousCell != null)
 		{
 			previousCell.RemoveEntity(this);
 		}
-		Cell nextCell = GameMaster.Instance.Grid.GetCell((int)toPosition.x, (int)toPosition.y);
+		Cell nextCell = GameMaster.Instance.Grid.GetCell(toPosition);
 		if (nextCell != null)
 		{
 			nextCell.AddEntity(this);

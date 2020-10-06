@@ -8,7 +8,7 @@ public class MovingEnemy : Hazard
 	protected override void Do()
 	{
 		Vector2 nextPos = transform.position + (transform.right * m_casesTravelled);
-		if (GameMaster.Instance.Grid.GetCell((int)nextPos.x, (int)nextPos.y) == null)
+		if (GameMaster.Instance.Grid.GetCell(nextPos) == null)
 		{
 			OnMapBorderReached();
 		}
@@ -36,13 +36,13 @@ public class MovingEnemy : Hazard
 		if (!gameObject.activeSelf)
 			return;
 
-		Cell nextCell = GameMaster.Instance.Grid.GetCell((int)toPosition.x, (int)toPosition.y);
+		Cell nextCell = GameMaster.Instance.Grid.GetCell(toPosition);
 		if (nextCell != null)
 		{
 			bool canMove = true;
 			for (int i = nextCell.Entities.Count - 1; i >= 0; i--)
 			{
-				if (nextCell.Entities[i].GetType() == this.GetType() && nextCell.Entities[i].transform.right == (transform.right * -1))
+				if (nextCell.Entities[i] is MovingEnemy && this is MovingEnemy && nextCell.Entities[i].transform.right == (transform.right * -1))
 				{
 					canMove = false;
 					ResourceManager.Instance.ReleaseInstance(nextCell.Entities[i]);

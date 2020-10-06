@@ -14,7 +14,7 @@ public class ShieldSpawnActionInstance : ActionInstance
 	public override void Execute(Player player, GameMaster.EDirection keyPressed)
 	{
 		Vector3 position = player.transform.position + (Vector3)Utils.ConvertDirectionToVector(keyPressed);
-		Cell cell = GameMaster.Instance.Grid.GetCell((int)position.x, (int)position.y);
+		Cell cell = GameMaster.Instance.Grid.GetCell(position);
 		if (cell != null)
 		{
 			foreach (GameEntity gameEntity in cell.Entities)

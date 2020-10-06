@@ -19,7 +19,7 @@ public class SwapActionInstance : ActionInstance
 	private void BasicSwap(Player player, GameMaster.EDirection direction)
 	{
 		Vector2 nextPos = (Vector2)player.transform.position + (Utils.ConvertDirectionToVector(direction) * Asset.Range);
-		Cell targetCell = GameMaster.Instance.Grid.GetCell((int)nextPos.x, (int)nextPos.y);
+		Cell targetCell = GameMaster.Instance.Grid.GetCell(nextPos);
 		if (targetCell != null)
 		{
 			List<GameEntity> toMove = new List<GameEntity>(targetCell.Entities);
@@ -42,7 +42,7 @@ public class SwapActionInstance : ActionInstance
 	{
 		Vector2 directionVec = Utils.ConvertDirectionToVector(direction);
 		Vector2 nextPos = (Vector2)player.transform.position + directionVec;
-		Cell targetCell = GameMaster.Instance.Grid.GetCell((int)nextPos.x, (int)nextPos.y);
+		Cell targetCell = GameMaster.Instance.Grid.GetCell(nextPos);
 		if (targetCell != null)
 		{
 			bool foundCell = false;
@@ -55,7 +55,7 @@ public class SwapActionInstance : ActionInstance
 				else
 				{
 					nextPos = nextPos + directionVec;
-					Cell nextCell = GameMaster.Instance.Grid.GetCell((int)nextPos.x, (int)nextPos.y);
+					Cell nextCell = GameMaster.Instance.Grid.GetCell(nextPos);
 					if (nextCell == null)
 					{
 						nextPos -= directionVec;

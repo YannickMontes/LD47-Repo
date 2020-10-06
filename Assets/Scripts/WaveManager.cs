@@ -33,7 +33,7 @@ public class WaveManager : Singleton<WaveManager>
 			{
 				chooseDirection = prefabToSpawn.AllowedDirections[UnityEngine.Random.Range(0, prefabToSpawn.AllowedDirections.Count)];
 				spawnPoint = GameMaster.Instance.GetSpawnPosition(chooseDirection);
-				hasEntityOnCell = GameMaster.Instance.Grid.GetCell((int)spawnPoint.x, (int)spawnPoint.y).Entities.Count > 0;
+				hasEntityOnCell = GameMaster.Instance.Grid.GetCell(spawnPoint).Entities.Count > 0;
 				if (tryLimit > 1000)
 				{
 					tryLimit = 0;

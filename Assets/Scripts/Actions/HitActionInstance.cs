@@ -15,7 +15,7 @@ public class HitActionInstance : ActionInstance
 	public override void Execute(Player player, GameMaster.EDirection keyPressed)
 	{
 		Vector2 aimPos = (Vector2)player.transform.position + Utils.ConvertDirectionToVector(keyPressed);
-		Cell cell = GameMaster.Instance.Grid.GetCell((int)aimPos.x, (int)aimPos.y);
+		Cell cell = GameMaster.Instance.Grid.GetCell(aimPos);
 		if (cell != null)
 		{
 			player.StartCoroutine(SpawnVisual(aimPos, keyPressed));

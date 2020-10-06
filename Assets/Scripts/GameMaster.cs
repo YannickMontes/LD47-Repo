@@ -27,9 +27,9 @@ public class GameMaster : Singleton<GameMaster>
 	public IRelayLink<GameState> GameStateRelay { get { return m_gameStateRelay ?? (m_gameStateRelay = new Relay<GameState>()); } }
 	public Player Player { get { return m_player; } }
 
-	public bool CanPlayerMove(int x, int y)
+	public bool CanPlayerMove(Vector2 coord)
 	{
-		Cell cell = m_grid.GetCell(x, y);
+		Cell cell = m_grid.GetCell(coord);
 		return cell != null && !cell.Contains<Shield>();
 	}
 
